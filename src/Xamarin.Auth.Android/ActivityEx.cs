@@ -16,14 +16,18 @@ namespace Xamarin.Utilities.Android
 
 		public static void ShowError (this Activity activity, string title, string message)
 		{
-			var b = new AlertDialog.Builder (activity);
-			b.SetMessage (message);
-			b.SetTitle (title);
-			b.SetNeutralButton ("OK", (s, e) => {
-				((AlertDialog)s).Cancel ();
-			});
-			var alert = b.Create ();
-			alert.Show ();
+			try {
+				var b = new AlertDialog.Builder (activity);
+				b.SetMessage (message);
+				b.SetTitle (title);
+				b.SetNeutralButton ("OK", (s, e) => {
+					((AlertDialog)s).Cancel ();
+				});
+				var alert = b.Create ();
+				alert.Show ();
+			} catch (System.Exception ex) {
+				
+			}
 		}
 	}
 }
